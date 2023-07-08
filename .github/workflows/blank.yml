@@ -17,6 +17,9 @@ jobs:
             echo "VPN config file not found"
           fi
       - name: Connect VPN
-        run: openvpn --config "recoreco-br1.vpnjantit-udp-2500 (1).ovpn" &
+        run: |
+          openvpn --config "recoreco-br1.vpnjantit-udp-2500 (1).ovpn" --log openvpn.log &
+          sleep 10
+          cat openvpn.log
       - name: Check VPN connection
         run: ifconfig tun0
