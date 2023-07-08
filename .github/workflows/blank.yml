@@ -16,11 +16,7 @@ jobs:
           else
             echo "VPN config file not found"
           fi
+      - name: Connect VPN
+        run: openvpn --config "recoreco-br1.vpnjantit-udp-2500 (1).ovpn" &
       - name: Check VPN connection
-        run: |
-          openvpn --status
-          if [ "$?" -eq "0" ]; then
-            echo "VPN connected"
-          else
-            echo "VPN not connected"
-          fi
+        run: ifconfig tun0
