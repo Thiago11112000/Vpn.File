@@ -22,6 +22,6 @@ jobs:
           sleep 10
           cat openvpn.log
       - name: Check VPN connection
-        run: ifconfig tun0
+        run: ip addr show tun0
       - name: Keep VPN connection active
         run: sleep 60
