@@ -16,3 +16,11 @@ jobs:
           else
             echo "VPN config file not found"
           fi
+      - name: Check VPN connection
+        run: |
+          openvpn --status
+          if [ "$?" -eq "0" ]; then
+            echo "VPN connected"
+          else
+            echo "VPN not connected"
+          fi
