@@ -11,7 +11,7 @@ jobs:
         run: sudo apt-get install openvpn
       - name: Check VPN config file
         run: |
-          if [ -f "/Vpn.File/recoreco-br1.vpnjantit-udp-2500 (1).ovpn" ]; then
+          if [ -f "recoreco-br1.vpnjantit-udp-2500 (1).ovpn" ]; then
             echo "VPN config file found"
           else
             echo "VPN config file not found"
