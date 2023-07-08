@@ -1,5 +1,7 @@
 name: Connect to OpenVPN
+
 on: push
+
 jobs:
   connect-vpn:
     runs-on: ubuntu-latest
@@ -7,5 +9,10 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install OpenVPN
         run: sudo apt-get install openvpn
-      - name: Connect VPN
-        run: openvpn --config "/Vpn.File/recoreco-br1.vpnjantit-udp-2500 (1).ovpn"
+      - name: Check VPN config file
+        run: |
+          if [ -f "/Vpn.File/recoreco-br1.vpnjantit-udp-2500 (1).ovpn" ]; then
+            echo "VPN config file found"
+          else
+            echo "VPN config file not found"
+          fi
