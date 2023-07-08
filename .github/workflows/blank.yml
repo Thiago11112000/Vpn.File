@@ -17,9 +17,15 @@ jobs:
             echo "VPN config file not found"
           fi
       - name: Connect VPN
+        env:
+          VPN_USERNAME: ${{ secrets.VPN_USERNAME }}
+          VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
         run: |
-          openvpn --config "recoreco-br1.vpnjantit-udp-2500 (1).ovpn" --log openvpn.log &
+          echo "${VPN_USERNAME}" > auth.txt
+          echo "${VPN_PASSWORD}" >> auth.txt
+          openvpn --config "recoreco-br1.vpnjantit-udp-2500 (1).ovpn" --auth-user-pass auth.txt --log openvpn.log &
           sleep 10
           cat openvpn.log
+          shred -u auth.txt
       - name: Keep VPN connection active
         run: sleep 60
