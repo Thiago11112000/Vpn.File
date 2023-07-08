@@ -8,4 +8,4 @@ jobs:
       - name: Install OpenVPN
         run: sudo apt-get install openvpn
       - name: Connect VPN
-        run: openvpn --config .github/vpn/recorecobr1.vpnjantitudp2500 (1).ovpn
+        run: openvpn --config ".github/vpn/recorecobr1.vpnjantitudp2500 (1).ovpn"
