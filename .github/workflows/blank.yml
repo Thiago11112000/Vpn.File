@@ -1,0 +1,11 @@
+name: Connect to OpenVPN
+on: push
+jobs:
+  connect-vpn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install OpenVPN
+        run: sudo apt-get install openvpn
+      - name: Connect VPN
+        run: openvpn --config .github/vpn/recorecobr1.vpnjantitudp2500 (1).ovpn
